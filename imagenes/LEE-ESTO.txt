@@ -1,0 +1,29 @@
+CÓMO PONER TUS FOTOS EN LA PÁGINA DE AVEDA
+==========================================
+
+Guarda tus fotos EN ESTA CARPETA con exactamente estos nombres
+(todo en minúscula, terminadas en .jpg):
+
+  portada.jpg    -> Foto grande del fondo principal (la que se ve al abrir la página).
+                    Ideal horizontal y grande: 1920 x 1080 píxeles o más.
+
+  mision-1.jpg   -> Foto vertical (grande, al lado izquierdo del bloque "Quiénes somos").
+  mision-2.jpg   -> Foto pequeña.
+  mision-3.jpg   -> Foto pequeña.
+
+  animal-1.jpg   -> Canela
+  animal-2.jpg   -> Simón
+  animal-3.jpg   -> Luna
+  animal-4.jpg   -> Bonito
+  animal-5.jpg   -> Nube
+  animal-6.jpg   -> Viejo Tom
+
+CONSEJOS
+--------
+- Si una foto todavía no existe, la página NO se rompe: muestra un recuadro
+  color arena que dice "Coloca aquí tu foto".
+- Usa fotos horizontales o cuadradas para las tarjetas de animales.
+- Comprime las fotos antes de subirlas (por ejemplo en squoosh.app o tinypng.com)
+  para que la página cargue rápido en celulares. Menos de 400 KB cada una es lo ideal.
+- Si tus fotos son .png o .jpeg, o quieres otros nombres, abre index.html y cambia
+  la parte que dice  src="imagenes/animal-1.jpg"  por el nombre real de tu archivo.

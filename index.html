@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVEDA | Fundación de ayuda a animales callejeros en Urabá, Antioquia</title>
+<meta name="description" content="AVEDA es una fundación sin ánimo de lucro que rescata, cura, esteriliza y busca hogar para perros y gatos en situación de calle en la región de Urabá, Antioquia. Dona, adopta o apadrina.">
+<meta name="theme-color" content="#e07a3f">
+<meta property="og:title" content="AVEDA — Ayuda a los animales callejeros de Urabá">
+<meta property="og:description" content="Rescatamos, curamos y buscamos hogar para los animales de la calle en Urabá, Antioquia. Tu donación salva vidas.">
+<meta property="og:type" content="website">
+<link rel="icon" href="imagenes/favicon.svg">
+<style>
+  :root{
+    --naranja:#e07a3f;
+    --naranja-osc:#c25f28;
+    --verde:#2f6b52;
+    --verde-osc:#1f4a38;
+    --crema:#fdf8f2;
+    --arena:#f4e7d8;
+    --tinta:#2b2320;
+    --gris:#6d635d;
+    --sombra:0 10px 30px rgba(43,35,32,.10);
+    --sombra-fuerte:0 20px 50px rgba(43,35,32,.18);
+    --radio:18px;
+    --ancho:1160px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    color:var(--tinta);background:var(--crema);line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .contenedor{width:100%;max-width:var(--ancho);margin:0 auto;padding:0 22px}
+  .seccion{padding:88px 0}
+  .seccion--arena{background:var(--arena)}
+  .etiqueta{
+    display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--naranja-osc);background:rgba(224,122,63,.13);
+    padding:7px 15px;border-radius:999px;margin-bottom:16px;
+  }
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+  h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;margin-bottom:14px}
+  .subtitulo{font-size:1.06rem;color:var(--gris);max-width:640px}
+  .centrado{text-align:center}
+  .centrado .subtitulo{margin-left:auto;margin-right:auto}
+
+  /* ---------- BOTONES ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:15px 30px;border-radius:999px;font-weight:700;font-size:1rem;
+    border:2px solid transparent;cursor:pointer;text-align:center;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    font-family:inherit;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn--donar{background:var(--naranja);color:#fff;box-shadow:0 8px 22px rgba(224,122,63,.38)}
+  .btn--donar:hover{background:var(--naranja-osc);box-shadow:0 12px 28px rgba(224,122,63,.5)}
+  .btn--verde{background:var(--verde);color:#fff;box-shadow:0 8px 22px rgba(47,107,82,.3)}
+  .btn--verde:hover{background:var(--verde-osc)}
+  .btn--linea{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+  .btn--linea:hover{background:rgba(255,255,255,.16)}
+  .btn--linea-osc{background:transparent;color:var(--verde);border-color:var(--verde)}
+  .btn--linea-osc:hover{background:var(--verde);color:#fff}
+  .btn--peq{padding:11px 22px;font-size:.92rem}
+  .btn--bloque{width:100%}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:16px 0;transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
+  }
+  header.solido{background:rgba(253,248,242,.96);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(43,35,32,.09);padding:10px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:1.35rem;letter-spacing:-.03em;color:#fff;transition:color .3s}
+  header.solido .logo{color:var(--tinta)}
+  .logo-icono{
+    width:44px;height:44px;border-radius:13px;background:var(--naranja);
+    display:grid;place-items:center;font-size:1.35rem;flex-shrink:0;
+    box-shadow:0 4px 14px rgba(224,122,63,.4);
+  }
+  .logo small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.05em;opacity:.85;text-transform:uppercase;line-height:1.2}
+  .menu{display:flex;align-items:center;gap:28px}
+  .menu a{font-weight:600;font-size:.97rem;color:#fff;opacity:.92;transition:opacity .2s,color .3s}
+  header.solido .menu a{color:var(--tinta)}
+  .menu a:hover{opacity:1;color:var(--naranja)}
+  .menu .btn{color:#fff}
+  .hamburguesa{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+  .hamburguesa span{display:block;width:26px;height:3px;border-radius:3px;background:#fff;transition:background .3s}
+  header.solido .hamburguesa span{background:var(--tinta)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;
+    background:linear-gradient(135deg,#3d2f26 0%,#5a4030 45%,#7a4f2c 100%);
+    overflow:hidden;
+  }
+  .hero-foto{position:absolute;inset:0;opacity:.45}
+  .hero-foto img{width:100%;height:100%;object-fit:cover}
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg,rgba(35,26,21,.92) 0%,rgba(35,26,21,.7) 45%,rgba(35,26,21,.38) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;padding:130px 0 90px;max-width:730px}
+  .hero h1{
+    font-size:clamp(2.3rem,6.2vw,4.2rem);font-weight:900;color:#fff;margin-bottom:20px;
+    text-shadow:0 2px 24px rgba(0,0,0,.35);
+  }
+  .hero h1 em{font-style:normal;color:#ffb877}
+  .hero p{font-size:clamp(1.02rem,2.2vw,1.22rem);color:rgba(255,255,255,.9);margin-bottom:34px;max-width:610px}
+  .hero-botones{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-nota{margin-top:30px;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.78);font-size:.9rem}
+  .scroll-abajo{
+    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;
+    color:rgba(255,255,255,.7);font-size:1.6rem;animation:flota 2s ease-in-out infinite;
+  }
+  @keyframes flota{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+  /* ---------- CIFRAS ---------- */
+  .cifras{background:var(--verde);padding:52px 0}
+  .cifras-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:26px;text-align:center}
+  .cifra strong{display:block;font-size:clamp(2.1rem,4.5vw,2.9rem);font-weight:900;color:#fff;line-height:1.1}
+  .cifra span{color:rgba(255,255,255,.85);font-size:.95rem;font-weight:600}
+
+  /* ---------- MISIÓN ---------- */
+  .mision{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .mision p{color:var(--gris);margin-bottom:16px}
+  .lista-check{list-style:none;margin-top:24px;display:grid;gap:13px}
+  .lista-check li{display:flex;gap:12px;align-items:flex-start;font-weight:600}
+  .lista-check li::before{
+    content:"✓";flex-shrink:0;width:25px;height:25px;border-radius:50%;
+    background:var(--verde);color:#fff;display:grid;place-items:center;font-size:.82rem;font-weight:900;margin-top:2px;
+  }
+  .mision-fotos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:172px 172px;gap:14px}
+  .mision-fotos .foto:nth-child(1){grid-row:span 2}
+
+  /* ---------- FOTOS Y PLACEHOLDER ---------- */
+  .foto{
+    position:relative;overflow:hidden;border-radius:var(--radio);
+    background:linear-gradient(135deg,var(--arena),#e6d3bd);box-shadow:var(--sombra);
+  }
+  .foto::after{
+    content:"🐾  Coloca aquí tu foto";position:absolute;inset:0;display:grid;place-items:center;
+    color:#a8907a;font-size:.88rem;font-weight:700;text-align:center;padding:14px;z-index:0;
+  }
+  .foto img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1;transition:transform .55s ease}
+  .foto:hover img{transform:scale(1.06)}
+  .foto img.falta{display:none}
+
+  /* ---------- GALERÍA ---------- */
+  .galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:22px;margin-top:44px}
+  .tarjeta-animal{
+    background:#fff;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);
+    transition:transform .28s ease,box-shadow .28s ease;
+  }
+  .tarjeta-animal:hover{transform:translateY(-6px);box-shadow:var(--sombra-fuerte)}
+  .tarjeta-animal .foto{border-radius:0;height:250px;box-shadow:none}
+  .tarjeta-cuerpo{padding:20px 22px 24px}
+  .tarjeta-cuerpo h3{font-size:1.2rem;margin-bottom:4px}
+  .tarjeta-lugar{font-size:.83rem;color:var(--naranja-osc);font-weight:700;margin-bottom:9px}
+  .tarjeta-cuerpo p{font-size:.94rem;color:var(--gris)}
+  .insignia{
+    position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.94);
+    color:var(--verde-osc);font-size:.72rem;font-weight:800;text-transform:uppercase;
+    letter-spacing:.06em;padding:6px 12px;border-radius:999px;box-shadow:0 3px 10px rgba(0,0,0,.14);
+  }
+  .insignia--urgente{background:var(--naranja);color:#fff}
+
+  /* ---------- CÓMO AYUDAR ---------- */
+  .ayudas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:44px}
+  .ayuda{
+    background:#fff;border-radius:var(--radio);padding:34px 28px;box-shadow:var(--sombra);
+    border-top:5px solid var(--naranja);display:flex;flex-direction:column;
+  }
+  .ayuda:nth-child(2){border-top-color:var(--verde)}
+  .ayuda:nth-child(3){border-top-color:#c9a227}
+  .ayuda-icono{font-size:2.3rem;margin-bottom:14px}
+  .ayuda h3{font-size:1.3rem;margin-bottom:10px}
+  .ayuda p{color:var(--gris);font-size:.97rem;margin-bottom:22px;flex-grow:1}
+
+  /* ---------- IMPACTO DE LA DONACIÓN ---------- */
+  .impacto{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;margin-top:42px}
+  .monto{
+    background:#fff;border:2px solid var(--arena);border-radius:var(--radio);
+    padding:26px 22px;text-align:center;transition:border-color .25s,transform .25s;
+  }
+  .monto:hover{border-color:var(--naranja);transform:translateY(-4px)}
+  .monto strong{display:block;font-size:1.55rem;font-weight:900;color:var(--naranja-osc);margin-bottom:6px}
+  .monto span{font-size:.94rem;color:var(--gris)}
+
+  /* ---------- CONTACTO ---------- */
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .contactos{display:grid;gap:16px;margin-top:30px}
+  .contacto-item{
+    display:flex;gap:16px;align-items:center;background:#fff;border-radius:15px;
+    padding:18px 20px;box-shadow:var(--sombra);transition:transform .2s ease;
+  }
+  .contacto-item:hover{transform:translateX(5px)}
+  .contacto-icono{
+    width:48px;height:48px;flex-shrink:0;border-radius:13px;display:grid;place-items:center;
+    font-size:1.4rem;background:rgba(224,122,63,.14);
+  }
+  .contacto-item small{display:block;font-size:.78rem;color:var(--gris);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+  .contacto-item strong{font-size:1.06rem;font-weight:800;word-break:break-word}
+  .mapa-nota{
+    margin-top:26px;background:var(--verde);color:#fff;border-radius:var(--radio);
+    padding:26px 28px;
+  }
+  .mapa-nota h3{font-size:1.15rem;margin-bottom:8px}
+  .mapa-nota p{font-size:.95rem;color:rgba(255,255,255,.86)}
+  .formulario{background:#fff;border-radius:var(--radio);padding:34px 30px;box-shadow:var(--sombra)}
+  .campo{margin-bottom:18px}
+  .campo label{display:block;font-size:.87rem;font-weight:700;margin-bottom:7px}
+  .campo input,.campo select,.campo textarea{
+    width:100%;padding:13px 15px;border:2px solid var(--arena);border-radius:12px;
+    font-family:inherit;font-size:.97rem;background:var(--crema);transition:border-color .2s;
+  }
+  .campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--naranja)}
+  .campo textarea{resize:vertical;min-height:110px}
+  .nota-form{font-size:.82rem;color:var(--gris);margin-top:12px;text-align:center}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta{background:linear-gradient(135deg,var(--naranja) 0%,#d0552a 100%);color:#fff;text-align:center;padding:82px 0}
+  .cta h2{color:#fff}
+  .cta p{max-width:600px;margin:0 auto 30px;color:rgba(255,255,255,.93);font-size:1.06rem}
+  .cta .btn{background:#fff;color:var(--naranja-osc)}
+  .cta .btn:hover{background:var(--crema)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--tinta);color:rgba(255,255,255,.7);padding:56px 0 26px;font-size:.94rem}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:38px;margin-bottom:38px}
+  footer h4{color:#fff;font-size:1rem;margin-bottom:14px;letter-spacing:.02em}
+  footer ul{list-style:none;display:grid;gap:9px}
+  footer a:hover{color:var(--naranja)}
+  .redes{display:flex;gap:12px;margin-top:16px}
+  .red{
+    width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);
+    display:grid;place-items:center;font-size:1.15rem;transition:background .2s,transform .2s;
+  }
+  .red:hover{background:var(--naranja);transform:translateY(-3px)}
+  .footer-abajo{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;text-align:center;font-size:.86rem;color:rgba(255,255,255,.5)}
+
+  /* ---------- MODAL DE DONACIÓN ---------- */
+  .modal{
+    position:fixed;inset:0;z-index:200;background:rgba(30,22,18,.72);backdrop-filter:blur(4px);
+    display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+  }
+  .modal.abierto{display:flex}
+  .modal-caja{
+    background:var(--crema);border-radius:24px;max-width:560px;width:100%;
+    box-shadow:var(--sombra-fuerte);animation:sube .3s ease;max-height:92vh;overflow-y:auto;
+  }
+  @keyframes sube{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .modal-cabeza{
+    background:var(--naranja);color:#fff;padding:26px 30px;border-radius:24px 24px 0 0;
+    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+  }
+  .modal-cabeza h3{font-size:1.4rem;margin-bottom:4px}
+  .modal-cabeza p{font-size:.92rem;color:rgba(255,255,255,.9)}
+  .cerrar{background:rgba(255,255,255,.2);border:0;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.3rem;cursor:pointer;flex-shrink:0;line-height:1}
+  .cerrar:hover{background:rgba(255,255,255,.35)}
+  .modal-cuerpo{padding:26px 30px 30px}
+  .metodo{
+    background:#fff;border-radius:15px;padding:18px 20px;margin-bottom:14px;
+    display:flex;align-items:center;gap:16px;box-shadow:0 3px 12px rgba(43,35,32,.07);
+  }
+  .metodo-logo{
+    width:52px;height:52px;border-radius:13px;display:grid;place-items:center;flex-shrink:0;
+    font-weight:900;font-size:.72rem;color:#fff;text-align:center;line-height:1.1;padding:4px;
+  }
+  .metodo-info{flex-grow:1;min-width:0}
+  .metodo-info small{display:block;font-size:.78rem;color:var(--gris);font-weight:600}
+  .metodo-info strong{font-size:1.05rem;word-break:break-all}
+  .copiar{
+    background:var(--arena);border:0;border-radius:10px;padding:9px 14px;font-weight:700;
+    font-size:.84rem;cursor:pointer;font-family:inherit;color:var(--tinta);flex-shrink:0;transition:background .2s;
+  }
+  .copiar:hover{background:var(--naranja);color:#fff}
+  .modal-pie{background:var(--arena);border-radius:15px;padding:18px 20px;font-size:.9rem;color:var(--gris);margin-top:6px}
+
+  /* ---------- ANIMACIÓN DE ENTRADA ---------- */
+  .revelar{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .revelar.visible{opacity:1;transform:none}
+
+  /* ---------- BOTÓN FLOTANTE WHATSAPP ---------- */
+  .wa-flotante{
+    position:fixed;right:20px;bottom:20px;z-index:90;width:58px;height:58px;border-radius:50%;
+    background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.7rem;
+    box-shadow:0 8px 24px rgba(37,211,102,.45);transition:transform .2s;
+  }
+  .wa-flotante:hover{transform:scale(1.08)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .mision,.contacto-grid{grid-template-columns:1fr;gap:38px}
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    .seccion{padding:64px 0}
+    .hamburguesa{display:flex}
+    .menu{
+      position:absolute;top:100%;left:14px;right:14px;background:#fff;flex-direction:column;
+      align-items:stretch;gap:4px;padding:16px;border-radius:18px;box-shadow:var(--sombra-fuerte);
+      display:none;
+    }
+    .menu.abierto{display:flex}
+    .menu a{color:var(--tinta)!important;opacity:1;padding:11px 12px;border-radius:10px}
+    .menu a:hover{background:var(--arena)}
+    .menu .btn{color:#fff!important;margin-top:6px;justify-content:center}
+    .hero-inner{padding:120px 0 90px}
+    .hero-botones .btn{flex:1 1 100%}
+    .footer-grid{grid-template-columns:1fr;gap:28px}
+    .mision-fotos{grid-template-rows:140px 140px}
+    .modal-cabeza,.modal-cuerpo{padding-left:20px;padding-right:20px}
+    .metodo{flex-wrap:wrap}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ENCABEZADO ============ -->
+<header id="cabecera">
+  <div class="contenedor nav">
+    <a href="#inicio" class="logo">
+      <span class="logo-icono">🐾</span>
+      <span>AVEDA<small>Urabá · Antioquia</small></span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#mision">Quiénes somos</a>
+      <a href="#animales">Nuestros rescatados</a>
+      <a href="#ayudar">Cómo ayudar</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#" class="btn btn--donar btn--peq" data-donar>❤️ Donar</a>
+    </nav>
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero-foto">
+    <img src="imagenes/portada.jpg" alt="Perro callejero rescatado en Urabá, Antioquia" onerror="this.style.display='none'">
+  </div>
+  <div class="contenedor">
+    <div class="hero-inner">
+      <span class="etiqueta" style="background:rgba(255,255,255,.16);color:#ffc48f">Fundación sin ánimo de lucro · Urabá, Antioquia</span>
+      <h1>Cada animal de la calle merece <em>una segunda oportunidad</em></h1>
+      <p>
+        En AVEDA rescatamos, curamos, esterilizamos y buscamos hogar para los perros y gatos
+        que sobreviven en las calles de Apartadó, Turbo, Carepa, Chigorodó y toda la región de Urabá.
+        No recibimos recursos del Estado: vivimos de corazones como el tuyo.
+      </p>
+      <div class="hero-botones">
+        <a href="#" class="btn btn--donar" data-donar>❤️ Quiero donar ahora</a>
+        <a href="#animales" class="btn btn--linea">Conoce sus historias</a>
+      </div>
+      <div class="hero-nota">
+        <span>📞</span>
+        <span>¿Viste un animal herido o abandonado? Llámanos: <strong id="telHero">+57 300 000 0000</strong></span>
+      </div>
+    </div>
+  </div>
+  <a href="#cifras" class="scroll-abajo" aria-label="Bajar">⌄</a>
+</section>
+
+<!-- ============ CIFRAS ============ -->
+<section class="cifras" id="cifras">
+  <div class="contenedor">
+    <div class="cifras-grid">
+      <div class="cifra"><strong data-contar="480">0</strong><span>Animales rescatados</span></div>
+      <div class="cifra"><strong data-contar="310">0</strong><span>Adopciones responsables</span></div>
+      <div class="cifra"><strong data-contar="1200">0</strong><span>Esterilizaciones</span></div>
+      <div class="cifra"><strong data-contar="9">0</strong><span>Años cuidando Urabá</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISIÓN ============ -->
+<section class="seccion" id="mision">
+  <div class="contenedor mision revelar">
+    <div>
+      <span class="etiqueta">Quiénes somos</span>
+      <h2>Una familia que no le da la espalda a los que no tienen voz</h2>
+      <p>
+        AVEDA nació en Urabá del dolor de ver animales enfermos, atropellados y hambrientos
+        en las calles y carreteras de nuestra región. Somos un grupo de vecinos, veterinarios
+        y voluntarios que decidió actuar en lugar de mirar hacia otro lado.
+      </p>
+      <p>
+        Trabajamos todos los días con lo que tenemos: hogares de paso en casas de familia,
+        jornadas de esterilización a bajo costo y campañas de educación en colegios y barrios
+        para enseñar que un animal no es un objeto que se abandona.
+      </p>
+      <ul class="lista-check">
+        <li>Rescate y atención veterinaria de urgencia las 24 horas</li>
+        <li>Jornadas de esterilización gratuitas y de bajo costo</li>
+        <li>Hogares de paso y adopciones con seguimiento</li>
+        <li>Educación en bienestar animal en colegios y comunidades</li>
+      </ul>
+    </div>
+    <div class="mision-fotos">
+      <div class="foto"><img src="imagenes/mision-1.jpg" alt="Voluntarios de AVEDA atendiendo un perro rescatado" onerror="this.classList.add('falta')"></div>
+      <div class="foto"><img src="imagenes/mision-2.jpg" alt="Jornada de esterilización en Urabá" onerror="this.classList.add('falta')"></div>
+      <div class="foto"><img src="imagenes/mision-3.jpg" alt="Gatico rescatado en Apartadó" onerror="this.classList.add('falta')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA DE ANIMALES ============ -->
+<section class="seccion seccion--arena" id="animales">
+  <div class="contenedor">
+    <div class="centrado revelar">
+      <span class="etiqueta">Nuestros rescatados</span>
+      <h2>Historias reales de las calles de Urabá</h2>
+      <p class="subtitulo">
+        Así llegaron y así están hoy. Todos ellos buscan una familia responsable
+        o un padrino que ayude con sus gastos mientras encuentran hogar.
+      </p>
+    </div>
+
+    <div class="galeria">
+      <article class="tarjeta-animal revelar">
+        <div class="foto">
+          <span class="insignia">En adopción</span>
+          <img src="imagenes/animal-1.jpg" alt="Perro mestizo rescatado en Apartadó" onerror="this.classList.add('falta')">
+        </div>
+        <div class="tarjeta-cuerpo">
+          <h3>Canela</h3>
+          <div class="tarjeta-lugar">📍 Rescatada en Apartadó</div>
+          <p>Llegó desnutrida y con sarna después de meses en la plaza de mercado. Hoy está sana, esterilizada y busca una familia que la quiera para siempre.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-animal revelar">
+        <div class="foto">
+          <span class="insignia insignia--urgente">Tratamiento urgente</span>
+          <img src="imagenes/animal-2.jpg" alt="Perro accidentado rescatado en la vía a Turbo" onerror="this.classList.add('falta')">
+        </div>
+        <div class="tarjeta-cuerpo">
+          <h3>Simón</h3>
+          <div class="tarjeta-lugar">📍 Rescatado en la vía a Turbo</div>
+          <p>Fue atropellado y abandonado en la carretera. Necesita cirugía de cadera y varias semanas de rehabilitación. Tu donación paga su recuperación.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-animal revelar">
+        <div class="foto">
+          <span class="insignia">Adoptada ❤️</span>
+          <img src="imagenes/animal-3.jpg" alt="Gata rescatada en Carepa" onerror="this.classList.add('falta')">
+        </div>
+        <div class="tarjeta-cuerpo">
+          <h3>Luna</h3>
+          <div class="tarjeta-lugar">📍 Rescatada en Carepa</div>
+          <p>La encontramos con sus tres gaticos dentro de una caja bajo la lluvia. Todos fueron esterilizados y hoy viven con familias del municipio.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-animal revelar">
+        <div class="foto">
+          <span class="insignia">En hogar de paso</span>
+          <img src="imagenes/animal-4.jpg" alt="Cachorro rescatado en Chigorodó" onerror="this.classList.add('falta')">
+        </div>
+        <div class="tarjeta-cuerpo">
+          <h3>Bonito</h3>
+          <div class="tarjeta-lugar">📍 Rescatado en Chigorodó</div>
+          <p>Tenía apenas dos meses cuando lo dejaron amarrado a un poste. Está vacunado, desparasitado y esperando su familia definitiva.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-animal revelar">
+        <div class="foto">
+          <span class="insignia">En adopción</span>
+          <img src="imagenes/animal-5.jpg" alt="Perra rescatada en Necoclí" onerror="this.classList.add('falta')">
+        </div>
+        <div class="tarjeta-cuerpo">
+          <h3>Nube</h3>
+          <div class="tarjeta-lugar">📍 Rescatada en Necoclí</div>
+          <p>Sobrevivió comiendo de la basura en la playa. Es dulce, sana y perfecta para una familia con niños. Ya está esterilizada.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-animal revelar">
+        <div class="foto">
+          <span class="insignia insignia--urgente">Necesita padrino</span>
+          <img src="imagenes/animal-6.jpg" alt="Perro adulto rescatado en Turbo" onerror="this.classList.add('falta')">
+        </div>
+        <div class="tarjeta-cuerpo">
+          <h3>Viejo Tom</h3>
+          <div class="tarjeta-lugar">📍 Rescatado en Turbo</div>
+          <p>Un abuelo de la calle que ya nadie quiere adoptar. Solo pide comida, medicinas y un rincón calientico. ¿Serás su padrino?</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO AYUDAR ============ -->
+<section class="seccion" id="ayudar">
+  <div class="contenedor">
+    <div class="centrado revelar">
+      <span class="etiqueta">Cómo ayudar</span>
+      <h2>Hay muchas formas de salvar una vida</h2>
+      <p class="subtitulo">No necesitas mucho para cambiarlo todo. Elige la que puedas y nosotros hacemos el resto.</p>
+    </div>
+
+    <div class="ayudas">
+      <div class="ayuda revelar">
+        <div class="ayuda-icono">❤️</div>
+        <h3>Dona</h3>
+        <p>Con tu aporte compramos comida, medicinas y pagamos cirugías. Puedes donar una sola vez o hacerte donante mensual.</p>
+        <a href="#" class="btn btn--donar btn--bloque" data-donar>Donar ahora</a>
+      </div>
+      <div class="ayuda revelar">
+        <div class="ayuda-icono">🏠</div>
+        <h3>Adopta o sé hogar de paso</h3>
+        <p>Cada adopción libera un cupo para rescatar a otro animal. Todos entregan esterilizados, vacunados y desparasitados.</p>
+        <a href="#contacto" class="btn btn--linea-osc btn--bloque">Quiero adoptar</a>
+      </div>
+      <div class="ayuda revelar">
+        <div class="ayuda-icono">🤝</div>
+        <h3>Sé voluntario o padrino</h3>
+        <p>Ayúdanos en las jornadas, transporta animales, dona concentrado o apadrina a un rescatado con un aporte mensual.</p>
+        <a href="#contacto" class="btn btn--linea-osc btn--bloque">Quiero ser voluntario</a>
+      </div>
+    </div>
+
+    <div class="centrado revelar" style="margin-top:70px">
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem)">¿Qué logra tu donación?</h2>
+      <p class="subtitulo">Cada peso se convierte en comida, medicina y una vida salvada.</p>
+    </div>
+    <div class="impacto">
+      <div class="monto"><strong>$20.000</strong><span>Alimenta a un rescatado durante una semana</span></div>
+      <div class="monto"><strong>$50.000</strong><span>Desparasitación y vacunas completas</span></div>
+      <div class="monto"><strong>$120.000</strong><span>Una esterilización que evita camadas en la calle</span></div>
+      <div class="monto"><strong>$300.000</strong><span>Cirugía de urgencia para un animal atropellado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="seccion seccion--arena" id="contacto">
+  <div class="contenedor contacto-grid">
+    <div class="revelar">
+      <span class="etiqueta">Contacto</span>
+      <h2>Estamos a una llamada de distancia</h2>
+      <p class="subtitulo">
+        Si ves un animal herido, abandonado o en peligro en Urabá, escríbenos de inmediato.
+        Atendemos reportes todos los días.
+      </p>
+
+      <div class="contactos">
+        <a class="contacto-item" href="https://wa.me/573000000000" target="_blank" rel="noopener">
+          <span class="contacto-icono" style="background:rgba(37,211,102,.15)">💬</span>
+          <span><small>WhatsApp — reportes y rescates</small><strong>+57 300 000 0000</strong></span>
+        </a>
+        <a class="contacto-item" href="tel:+573000000000">
+          <span class="contacto-icono">📞</span>
+          <span><small>Línea de emergencias</small><strong>+57 300 000 0000</strong></span>
+        </a>
+        <a class="contacto-item" href="mailto:contacto@aveda.org">
+          <span class="contacto-icono" style="background:rgba(47,107,82,.14)">✉️</span>
+          <span><small>Correo electrónico</small><strong>contacto@aveda.org</strong></span>
+        </a>
+        <div class="contacto-item">
+          <span class="contacto-icono" style="background:rgba(201,162,39,.18)">📍</span>
+          <span><small>Dónde estamos</small><strong>Apartadó, Urabá — Antioquia, Colombia</strong></span>
+        </div>
+      </div>
+
+      <div class="mapa-nota">
+        <h3>🚨 ¿Encontraste un animal en peligro?</h3>
+        <p>Escríbenos por WhatsApp con una foto, la ubicación exacta y tu número. No lo muevas si está herido: te guiamos por teléfono mientras llegamos.</p>
+      </div>
+    </div>
+
+    <form class="formulario revelar" id="formulario">
+      <h3 style="font-size:1.35rem;margin-bottom:6px">Escríbenos</h3>
+      <p style="color:var(--gris);font-size:.94rem;margin-bottom:22px">Cuéntanos cómo quieres ayudar o reporta un caso.</p>
+      <div class="campo">
+        <label for="nombre">Tu nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" required>
+      </div>
+      <div class="campo">
+        <label for="telefono">Teléfono / WhatsApp</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="300 000 0000" required>
+      </div>
+      <div class="campo">
+        <label for="motivo">¿En qué te podemos ayudar?</label>
+        <select id="motivo" name="motivo">
+          <option>Reportar un animal en peligro</option>
+          <option>Quiero adoptar</option>
+          <option>Quiero ser hogar de paso</option>
+          <option>Quiero ser voluntario</option>
+          <option>Quiero donar o apadrinar</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos los detalles, el municipio y la dirección si es un rescate..."></textarea>
+      </div>
+      <button type="submit" class="btn btn--verde btn--bloque">Enviar por WhatsApp</button>
+      <p class="nota-form">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta">
+  <div class="contenedor revelar">
+    <h2>Hoy hay un animal esperando en la calle</h2>
+    <p>No podemos rescatarlos a todos solos. Con lo que te tomas un café, un rescatado come una semana entera.</p>
+    <a href="#" class="btn" data-donar>❤️ Hacer mi donación</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="contenedor">
+    <div class="footer-grid">
+      <div>
+        <a href="#inicio" class="logo" style="color:#fff">
+          <span class="logo-icono">🐾</span>
+          <span>AVEDA<small>Urabá · Antioquia</small></span>
+        </a>
+        <p style="margin-top:16px;max-width:330px">
+          Fundación sin ánimo de lucro dedicada al rescate, atención y adopción de animales
+          en situación de calle en la región de Urabá, Antioquia.
+        </p>
+        <div class="redes">
+          <a href="#" class="red" aria-label="Facebook" title="Facebook">f</a>
+          <a href="#" class="red" aria-label="Instagram" title="Instagram">◉</a>
+          <a href="https://wa.me/573000000000" class="red" aria-label="WhatsApp" title="WhatsApp">💬</a>
+          <a href="#" class="red" aria-label="TikTok" title="TikTok">♪</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#mision">Quiénes somos</a></li>
+          <li><a href="#animales">Nuestros rescatados</a></li>
+          <li><a href="#ayudar">Cómo ayudar</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#" data-donar>Donar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contáctanos</h4>
+        <ul>
+          <li><a href="tel:+573000000000">📞 +57 300 000 0000</a></li>
+          <li><a href="https://wa.me/573000000000">💬 WhatsApp</a></li>
+          <li><a href="mailto:contacto@aveda.org">✉️ contacto@aveda.org</a></li>
+          <li>📍 Apartadó, Antioquia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-abajo">
+      © <span id="anio">2026</span> Fundación AVEDA · NIT 000.000.000-0 · Urabá, Antioquia, Colombia · Hecho con ❤️ por los animales
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
+<a href="https://wa.me/573000000000?text=Hola%20AVEDA,%20quiero%20ayudar" class="wa-flotante" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">💬</a>
+
+<!-- ============ MODAL DE DONACIÓN ============ -->
+<div class="modal" id="modalDonar" role="dialog" aria-modal="true" aria-labelledby="tituloModal">
+  <div class="modal-caja">
+    <div class="modal-cabeza">
+      <div>
+        <h3 id="tituloModal">❤️ Gracias por donar</h3>
+        <p>Tu aporte llega directo a comida, medicinas y cirugías.</p>
+      </div>
+      <button class="cerrar" id="cerrarModal" aria-label="Cerrar">×</button>
+    </div>
+    <div class="modal-cuerpo">
+
+      <div class="metodo">
+        <div class="metodo-logo" style="background:#200020">NEQUI</div>
+        <div class="metodo-info">
+          <small>Nequi (celular)</small>
+          <strong data-valor="3000000000">300 000 0000</strong>
+        </div>
+        <button class="copiar" data-copiar="3000000000">Copiar</button>
+      </div>
+
+      <div class="metodo">
+        <div class="metodo-logo" style="background:#e30613">DAVI<br>PLATA</div>
+        <div class="metodo-info">
+          <small>Daviplata (celular)</small>
+          <strong data-valor="3000000000">300 000 0000</strong>
+        </div>
+        <button class="copiar" data-copiar="3000000000">Copiar</button>
+      </div>
+
+      <div class="metodo">
+        <div class="metodo-logo" style="background:#ffd100;color:#333">BANCO</div>
+        <div class="metodo-info">
+          <small>Cuenta de ahorros Bancolombia · Fundación AVEDA</small>
+          <strong data-valor="00000000000">000-000000-00</strong>
+        </div>
+        <button class="copiar" data-copiar="00000000000">Copiar</button>
+      </div>
+
+      <a href="#" class="btn btn--donar btn--bloque" id="btnPaypal" style="margin:18px 0 6px" target="_blank" rel="noopener">
+        🌎 Donar con tarjeta / PayPal
+      </a>
+
+      <div class="modal-pie">
+        Después de donar, escríbenos por <a href="https://wa.me/573000000000" style="color:var(--naranja-osc);font-weight:700">WhatsApp</a>
+        con el comprobante y te enviamos el recibo y fotos de en qué se usó tu donación. 🐾
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* --- Año automático --- */
+  document.getElementById("anio").textContent = new Date().getFullYear();
+
+  /* --- Header sólido al bajar --- */
+  var cabecera = document.getElementById("cabecera");
+  function alScroll(){
+    cabecera.classList.toggle("solido", window.scrollY > 60);
+  }
+  window.addEventListener("scroll", alScroll, {passive:true});
+  alScroll();
+
+  /* --- Menú móvil --- */
+  var menu = document.getElementById("menu");
+  document.getElementById("hamburguesa").addEventListener("click", function(){
+    menu.classList.toggle("abierto");
+  });
+  menu.addEventListener("click", function(e){
+    if(e.target.tagName === "A") menu.classList.remove("abierto");
+  });
+
+  /* --- Modal de donación --- */
+  var modal = document.getElementById("modalDonar");
+  function abrirModal(e){
+    if(e) e.preventDefault();
+    modal.classList.add("abierto");
+    document.body.style.overflow = "hidden";
+  }
+  function cerrarModal(){
+    modal.classList.remove("abierto");
+    document.body.style.overflow = "";
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-donar]"), function(b){
+    b.addEventListener("click", abrirModal);
+  });
+  document.getElementById("cerrarModal").addEventListener("click", cerrarModal);
+  modal.addEventListener("click", function(e){ if(e.target === modal) cerrarModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") cerrarModal(); });
+
+  /* --- Copiar datos de donación --- */
+  Array.prototype.forEach.call(document.querySelectorAll(".copiar"), function(btn){
+    btn.addEventListener("click", function(){
+      var texto = btn.getAttribute("data-copiar");
+      var listo = function(){
+        var original = btn.textContent;
+        btn.textContent = "¡Copiado!";
+        setTimeout(function(){ btn.textContent = original; }, 1800);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(texto).then(listo, listo);
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = texto; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch(err){}
+        document.body.removeChild(ta); listo();
+      }
+    });
+  });
+
+  /* --- Formulario -> WhatsApp --- */
+  var NUMERO_WHATSAPP = "573000000000"; // <-- cambia por tu número real (57 + celular, sin espacios)
+  document.getElementById("formulario").addEventListener("submit", function(e){
+    e.preventDefault();
+    var t = "Hola AVEDA 🐾%0A" +
+            "*Nombre:* " + encodeURIComponent(document.getElementById("nombre").value) + "%0A" +
+            "*Teléfono:* " + encodeURIComponent(document.getElementById("telefono").value) + "%0A" +
+            "*Motivo:* " + encodeURIComponent(document.getElementById("motivo").value) + "%0A" +
+            "*Mensaje:* " + encodeURIComponent(document.getElementById("mensaje").value);
+    window.open("https://wa.me/" + NUMERO_WHATSAPP + "?text=" + t, "_blank");
+  });
+
+  /* --- Animación al hacer scroll --- */
+  if("IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("visible"); obs.unobserve(en.target); }
+      });
+    }, {threshold:.12});
+    Array.prototype.forEach.call(document.querySelectorAll(".revelar"), function(el){ obs.observe(el); });
+  } else {
+    Array.prototype.forEach.call(document.querySelectorAll(".revelar"), function(el){ el.classList.add("visible"); });
+  }
+
+  /* --- Contadores animados --- */
+  function animarCifra(el){
+    var meta = parseInt(el.getAttribute("data-contar"), 10),
+        inicio = null, dur = 1600;
+    function paso(ts){
+      if(!inicio) inicio = ts;
+      var p = Math.min((ts - inicio) / dur, 1);
+      el.textContent = Math.floor(p * meta).toLocaleString("es-CO") + (p === 1 ? "+" : "");
+      if(p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var cifras = document.querySelectorAll("[data-contar]");
+  if("IntersectionObserver" in window){
+    var obs2 = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if(en.isIntersecting){ animarCifra(en.target); obs2.unobserve(en.target); }
+      });
+    }, {threshold:.5});
+    Array.prototype.forEach.call(cifras, function(el){ obs2.observe(el); });
+  } else {
+    Array.prototype.forEach.call(cifras, function(el){ animarCifra(el); });
+  }
+})();
+</script>
+</body>
+</html>
