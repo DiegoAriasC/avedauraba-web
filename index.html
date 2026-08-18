@@ -169,6 +169,25 @@
   }
   .insignia--urgente{background:var(--naranja);color:#fff}
 
+  /* ---------- MOSAICO DE FOTOS ---------- */
+  .mosaico{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:18px;margin-top:44px}
+  .mosaico .foto{height:265px}
+  .mosaico .foto::before{
+    content:"";position:absolute;inset:auto 0 0 0;height:45%;z-index:2;pointer-events:none;
+    background:linear-gradient(to top,rgba(30,22,18,.72),transparent);opacity:0;transition:opacity .3s;
+  }
+  .mosaico .foto:has(img:not(.falta))::before{opacity:1}
+  .pie-foto{
+    position:absolute;left:16px;right:16px;bottom:14px;z-index:3;color:#fff;
+    font-size:.92rem;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.5);opacity:0;transition:opacity .3s;
+  }
+  .foto:has(img:not(.falta)) .pie-foto{opacity:1}
+  .nota-galeria{
+    margin-top:36px;background:#fff;border-radius:var(--radio);padding:26px 30px;text-align:center;
+    box-shadow:var(--sombra);
+  }
+  .nota-galeria p{color:var(--gris);margin-bottom:18px}
+
   /* ---------- CÓMO AYUDAR ---------- */
   .ayudas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:44px}
   .ayuda{
@@ -352,16 +371,16 @@
       <h1>Cada animal de la calle merece <em>una segunda oportunidad</em></h1>
       <p>
         En AVEDA rescatamos, curamos, esterilizamos y buscamos hogar para los perros y gatos
-        que sobreviven en las calles de Apartadó, Turbo, Carepa, Chigorodó y toda la región de Urabá.
+        que sobreviven en las calles de la región de Urabá, en Antioquia.
         No recibimos recursos del Estado: vivimos de corazones como el tuyo.
       </p>
       <div class="hero-botones">
         <a href="#" class="btn btn--donar" data-donar>❤️ Quiero donar ahora</a>
-        <a href="#animales" class="btn btn--linea">Conoce sus historias</a>
+        <a href="#animales" class="btn btn--linea">Conoce nuestro trabajo</a>
       </div>
       <div class="hero-nota">
         <span>📞</span>
-        <span>¿Viste un animal herido o abandonado? Llámanos: <strong id="telHero">+57 300 000 0000</strong></span>
+        <span>¿Viste un animal herido o abandonado? Llámanos: <strong id="telHero">+57 318 262 6857</strong></span>
       </div>
     </div>
   </div>
@@ -372,10 +391,10 @@
 <section class="cifras" id="cifras">
   <div class="contenedor">
     <div class="cifras-grid">
-      <div class="cifra"><strong data-contar="480">0</strong><span>Animales rescatados</span></div>
-      <div class="cifra"><strong data-contar="310">0</strong><span>Adopciones responsables</span></div>
-      <div class="cifra"><strong data-contar="1200">0</strong><span>Esterilizaciones</span></div>
-      <div class="cifra"><strong data-contar="9">0</strong><span>Años cuidando Urabá</span></div>
+      <div class="cifra"><strong data-contar="150">0</strong><span>Animales rescatados</span></div>
+      <div class="cifra"><strong data-contar="130">0</strong><span>Adopciones responsables</span></div>
+      <div class="cifra"><strong data-contar="600" data-sufijo="+">0</strong><span>Esterilizaciones</span></div>
+      <div class="cifra"><strong data-contar="6">0</strong><span>Años cuidando Urabá</span></div>
     </div>
   </div>
 </section>
@@ -416,85 +435,58 @@
   <div class="contenedor">
     <div class="centrado revelar">
       <span class="etiqueta">Nuestros rescatados</span>
-      <h2>Historias reales de las calles de Urabá</h2>
+      <h2>Las calles de Urabá, en fotos</h2>
       <p class="subtitulo">
-        Así llegaron y así están hoy. Todos ellos buscan una familia responsable
-        o un padrino que ayude con sus gastos mientras encuentran hogar.
+        Así llegan y así están hoy. Cada foto es un animal que dejó de dormir en la calle
+        gracias a la gente que nos apoya.
       </p>
     </div>
 
-    <div class="galeria">
-      <article class="tarjeta-animal revelar">
-        <div class="foto">
-          <span class="insignia">En adopción</span>
-          <img src="imagenes/animal-1.jpg" alt="Perro mestizo rescatado en Apartadó" onerror="this.classList.add('falta')">
-        </div>
-        <div class="tarjeta-cuerpo">
-          <h3>Canela</h3>
-          <div class="tarjeta-lugar">📍 Rescatada en Apartadó</div>
-          <p>Llegó desnutrida y con sarna después de meses en la plaza de mercado. Hoy está sana, esterilizada y busca una familia que la quiera para siempre.</p>
-        </div>
-      </article>
+    <!--
+      GALERÍA: reemplaza cada imagen por tus fotos reales en la carpeta imagenes/.
+      El texto dentro de <span class="pie-foto"> solo se ve cuando hay foto cargada:
+      escribe ahí el nombre del animal y el municipio (ej: "Canela · Apartadó").
+      Puedes borrar o duplicar bloques <div class="foto"> según cuántas fotos tengas.
+    -->
+    <div class="mosaico">
+      <div class="foto revelar">
+        <span class="insignia">En adopción</span>
+        <img src="imagenes/animal-1.jpg" alt="Animal rescatado por AVEDA en Urabá" onerror="this.classList.add('falta')">
+        <span class="pie-foto">Nombre · Municipio</span>
+      </div>
+      <div class="foto revelar">
+        <span class="insignia insignia--urgente">En tratamiento</span>
+        <img src="imagenes/animal-2.jpg" alt="Animal rescatado por AVEDA en Urabá" onerror="this.classList.add('falta')">
+        <span class="pie-foto">Nombre · Municipio</span>
+      </div>
+      <div class="foto revelar">
+        <span class="insignia">Adoptado ❤️</span>
+        <img src="imagenes/animal-3.jpg" alt="Animal rescatado por AVEDA en Urabá" onerror="this.classList.add('falta')">
+        <span class="pie-foto">Nombre · Municipio</span>
+      </div>
+      <div class="foto revelar">
+        <span class="insignia">En hogar de paso</span>
+        <img src="imagenes/animal-4.jpg" alt="Animal rescatado por AVEDA en Urabá" onerror="this.classList.add('falta')">
+        <span class="pie-foto">Nombre · Municipio</span>
+      </div>
+      <div class="foto revelar">
+        <span class="insignia">En adopción</span>
+        <img src="imagenes/animal-5.jpg" alt="Animal rescatado por AVEDA en Urabá" onerror="this.classList.add('falta')">
+        <span class="pie-foto">Nombre · Municipio</span>
+      </div>
+      <div class="foto revelar">
+        <span class="insignia insignia--urgente">Necesita padrino</span>
+        <img src="imagenes/animal-6.jpg" alt="Animal rescatado por AVEDA en Urabá" onerror="this.classList.add('falta')">
+        <span class="pie-foto">Nombre · Municipio</span>
+      </div>
+    </div>
 
-      <article class="tarjeta-animal revelar">
-        <div class="foto">
-          <span class="insignia insignia--urgente">Tratamiento urgente</span>
-          <img src="imagenes/animal-2.jpg" alt="Perro accidentado rescatado en la vía a Turbo" onerror="this.classList.add('falta')">
-        </div>
-        <div class="tarjeta-cuerpo">
-          <h3>Simón</h3>
-          <div class="tarjeta-lugar">📍 Rescatado en la vía a Turbo</div>
-          <p>Fue atropellado y abandonado en la carretera. Necesita cirugía de cadera y varias semanas de rehabilitación. Tu donación paga su recuperación.</p>
-        </div>
-      </article>
-
-      <article class="tarjeta-animal revelar">
-        <div class="foto">
-          <span class="insignia">Adoptada ❤️</span>
-          <img src="imagenes/animal-3.jpg" alt="Gata rescatada en Carepa" onerror="this.classList.add('falta')">
-        </div>
-        <div class="tarjeta-cuerpo">
-          <h3>Luna</h3>
-          <div class="tarjeta-lugar">📍 Rescatada en Carepa</div>
-          <p>La encontramos con sus tres gaticos dentro de una caja bajo la lluvia. Todos fueron esterilizados y hoy viven con familias del municipio.</p>
-        </div>
-      </article>
-
-      <article class="tarjeta-animal revelar">
-        <div class="foto">
-          <span class="insignia">En hogar de paso</span>
-          <img src="imagenes/animal-4.jpg" alt="Cachorro rescatado en Chigorodó" onerror="this.classList.add('falta')">
-        </div>
-        <div class="tarjeta-cuerpo">
-          <h3>Bonito</h3>
-          <div class="tarjeta-lugar">📍 Rescatado en Chigorodó</div>
-          <p>Tenía apenas dos meses cuando lo dejaron amarrado a un poste. Está vacunado, desparasitado y esperando su familia definitiva.</p>
-        </div>
-      </article>
-
-      <article class="tarjeta-animal revelar">
-        <div class="foto">
-          <span class="insignia">En adopción</span>
-          <img src="imagenes/animal-5.jpg" alt="Perra rescatada en Necoclí" onerror="this.classList.add('falta')">
-        </div>
-        <div class="tarjeta-cuerpo">
-          <h3>Nube</h3>
-          <div class="tarjeta-lugar">📍 Rescatada en Necoclí</div>
-          <p>Sobrevivió comiendo de la basura en la playa. Es dulce, sana y perfecta para una familia con niños. Ya está esterilizada.</p>
-        </div>
-      </article>
-
-      <article class="tarjeta-animal revelar">
-        <div class="foto">
-          <span class="insignia insignia--urgente">Necesita padrino</span>
-          <img src="imagenes/animal-6.jpg" alt="Perro adulto rescatado en Turbo" onerror="this.classList.add('falta')">
-        </div>
-        <div class="tarjeta-cuerpo">
-          <h3>Viejo Tom</h3>
-          <div class="tarjeta-lugar">📍 Rescatado en Turbo</div>
-          <p>Un abuelo de la calle que ya nadie quiere adoptar. Solo pide comida, medicinas y un rincón calientico. ¿Serás su padrino?</p>
-        </div>
-      </article>
+    <div class="nota-galeria revelar">
+      <p>
+        ¿Quieres conocer a los que están buscando familia? Escríbenos por WhatsApp
+        y te contamos la historia de cada uno, su estado de salud y qué necesita.
+      </p>
+      <a href="https://wa.me/573182626857?text=Hola%20AVEDA,%20quiero%20conocer%20los%20animales%20en%20adopci%C3%B3n" class="btn btn--verde" target="_blank" rel="noopener">💬 Conocer los que están en adopción</a>
     </div>
   </div>
 </section>
@@ -554,21 +546,21 @@
       </p>
 
       <div class="contactos">
-        <a class="contacto-item" href="https://wa.me/573000000000" target="_blank" rel="noopener">
+        <a class="contacto-item" href="https://wa.me/573182626857" target="_blank" rel="noopener">
           <span class="contacto-icono" style="background:rgba(37,211,102,.15)">💬</span>
-          <span><small>WhatsApp — reportes y rescates</small><strong>+57 300 000 0000</strong></span>
+          <span><small>WhatsApp — reportes y rescates</small><strong>+57 318 262 6857</strong></span>
         </a>
-        <a class="contacto-item" href="tel:+573000000000">
+        <a class="contacto-item" href="tel:+573182626857">
           <span class="contacto-icono">📞</span>
-          <span><small>Línea de emergencias</small><strong>+57 300 000 0000</strong></span>
+          <span><small>Línea de emergencias</small><strong>+57 318 262 6857</strong></span>
         </a>
-        <a class="contacto-item" href="mailto:contacto@aveda.org">
+        <a class="contacto-item" href="mailto:aveda@gmail.com">
           <span class="contacto-icono" style="background:rgba(47,107,82,.14)">✉️</span>
-          <span><small>Correo electrónico</small><strong>contacto@aveda.org</strong></span>
+          <span><small>Correo electrónico</small><strong>aveda@gmail.com</strong></span>
         </a>
         <div class="contacto-item">
           <span class="contacto-icono" style="background:rgba(201,162,39,.18)">📍</span>
-          <span><small>Dónde estamos</small><strong>Apartadó, Urabá — Antioquia, Colombia</strong></span>
+          <span><small>Dónde estamos</small><strong>Región de Urabá — Antioquia, Colombia</strong></span>
         </div>
       </div>
 
@@ -632,11 +624,12 @@
           Fundación sin ánimo de lucro dedicada al rescate, atención y adopción de animales
           en situación de calle en la región de Urabá, Antioquia.
         </p>
+        <!-- Cuando tengas redes sociales, agrégalas aquí con el mismo formato:
+             <a href="https://facebook.com/TU-PAGINA" class="red" aria-label="Facebook" title="Facebook">f</a>
+             <a href="https://instagram.com/TU-CUENTA" class="red" aria-label="Instagram" title="Instagram">◉</a> -->
         <div class="redes">
-          <a href="#" class="red" aria-label="Facebook" title="Facebook">f</a>
-          <a href="#" class="red" aria-label="Instagram" title="Instagram">◉</a>
-          <a href="https://wa.me/573000000000" class="red" aria-label="WhatsApp" title="WhatsApp">💬</a>
-          <a href="#" class="red" aria-label="TikTok" title="TikTok">♪</a>
+          <a href="https://wa.me/573182626857" class="red" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener">💬</a>
+          <a href="mailto:aveda@gmail.com" class="red" aria-label="Correo" title="Correo">✉️</a>
         </div>
       </div>
       <div>
@@ -652,21 +645,21 @@
       <div>
         <h4>Contáctanos</h4>
         <ul>
-          <li><a href="tel:+573000000000">📞 +57 300 000 0000</a></li>
-          <li><a href="https://wa.me/573000000000">💬 WhatsApp</a></li>
-          <li><a href="mailto:contacto@aveda.org">✉️ contacto@aveda.org</a></li>
-          <li>📍 Apartadó, Antioquia</li>
+          <li><a href="tel:+573182626857">📞 +57 318 262 6857</a></li>
+          <li><a href="https://wa.me/573182626857">💬 WhatsApp</a></li>
+          <li><a href="mailto:aveda@gmail.com">✉️ aveda@gmail.com</a></li>
+          <li>📍 Urabá, Antioquia</li>
         </ul>
       </div>
     </div>
     <div class="footer-abajo">
-      © <span id="anio">2026</span> Fundación AVEDA · NIT 000.000.000-0 · Urabá, Antioquia, Colombia · Hecho con ❤️ por los animales
+      © <span id="anio">2026</span> Fundación AVEDA · Urabá, Antioquia, Colombia · Hecho con ❤️ por los animales
     </div>
   </div>
 </footer>
 
 <!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
-<a href="https://wa.me/573000000000?text=Hola%20AVEDA,%20quiero%20ayudar" class="wa-flotante" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">💬</a>
+<a href="https://wa.me/573182626857?text=Hola%20AVEDA,%20quiero%20ayudar" class="wa-flotante" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">💬</a>
 
 <!-- ============ MODAL DE DONACIÓN ============ -->
 <div class="modal" id="modalDonar" role="dialog" aria-modal="true" aria-labelledby="tituloModal">
@@ -684,36 +677,18 @@
         <div class="metodo-logo" style="background:#200020">NEQUI</div>
         <div class="metodo-info">
           <small>Nequi (celular)</small>
-          <strong data-valor="3000000000">300 000 0000</strong>
+          <strong data-valor="3014804112">301 480 4112</strong>
         </div>
-        <button class="copiar" data-copiar="3000000000">Copiar</button>
+        <button class="copiar" data-copiar="3014804112">Copiar</button>
       </div>
 
-      <div class="metodo">
-        <div class="metodo-logo" style="background:#e30613">DAVI<br>PLATA</div>
-        <div class="metodo-info">
-          <small>Daviplata (celular)</small>
-          <strong data-valor="3000000000">300 000 0000</strong>
-        </div>
-        <button class="copiar" data-copiar="3000000000">Copiar</button>
-      </div>
-
-      <div class="metodo">
-        <div class="metodo-logo" style="background:#ffd100;color:#333">BANCO</div>
-        <div class="metodo-info">
-          <small>Cuenta de ahorros Bancolombia · Fundación AVEDA</small>
-          <strong data-valor="00000000000">000-000000-00</strong>
-        </div>
-        <button class="copiar" data-copiar="00000000000">Copiar</button>
-      </div>
-
-      <a href="#" class="btn btn--donar btn--bloque" id="btnPaypal" style="margin:18px 0 6px" target="_blank" rel="noopener">
-        🌎 Donar con tarjeta / PayPal
+      <a href="https://wa.me/573182626857?text=Hola%20AVEDA,%20quiero%20hacer%20una%20donaci%C3%B3n" class="btn btn--verde btn--bloque" style="margin:18px 0 6px" target="_blank" rel="noopener">
+        💬 Donar de otra forma / escribirnos
       </a>
 
       <div class="modal-pie">
-        Después de donar, escríbenos por <a href="https://wa.me/573000000000" style="color:var(--naranja-osc);font-weight:700">WhatsApp</a>
-        con el comprobante y te enviamos el recibo y fotos de en qué se usó tu donación. 🐾
+        ¿Prefieres donar concentrado, medicinas o cobijas? Escríbenos por WhatsApp y coordinamos la entrega.
+        Después de donar, mándanos el comprobante y te contamos en qué se usó tu aporte. 🐾
       </div>
     </div>
   </div>
@@ -782,7 +757,7 @@
   });
 
   /* --- Formulario -> WhatsApp --- */
-  var NUMERO_WHATSAPP = "573000000000"; // <-- cambia por tu número real (57 + celular, sin espacios)
+  var NUMERO_WHATSAPP = "573182626857"; // 57 + celular, sin espacios ni +
   document.getElementById("formulario").addEventListener("submit", function(e){
     e.preventDefault();
     var t = "Hola AVEDA 🐾%0A" +
@@ -812,7 +787,8 @@
     function paso(ts){
       if(!inicio) inicio = ts;
       var p = Math.min((ts - inicio) / dur, 1);
-      el.textContent = Math.floor(p * meta).toLocaleString("es-CO") + (p === 1 ? "+" : "");
+      var sufijo = el.getAttribute("data-sufijo") || "";
+      el.textContent = Math.floor(p * meta).toLocaleString("es-CO") + (p === 1 ? sufijo : "");
       if(p < 1) requestAnimationFrame(paso);
     }
     requestAnimationFrame(paso);

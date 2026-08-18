@@ -14,23 +14,26 @@ vercel.json         Configuración de despliegue en Vercel
 imagenes/           Fotos de la fundación (ver imagenes/LEE-ESTO.txt)
 ```
 
-## Datos que hay que reemplazar antes de publicar
+## Datos ya configurados
 
-Abre `index.html` y busca y reemplaza estos valores de ejemplo:
-
-| Buscar | Reemplazar por |
+| Dato | Valor |
 |---|---|
-| `+57 300 000 0000` | Teléfono real de la fundación |
-| `573000000000` | Número de WhatsApp (57 + celular, sin espacios ni +) |
-| `contacto@aveda.org` | Correo real |
-| `000-000000-00` | Número de cuenta Bancolombia |
-| `3000000000` (en el modal de donación) | Números de Nequi y Daviplata |
-| `NIT 000.000.000-0` | NIT real de la fundación |
-| `id="btnPaypal"` → `href="#"` | Enlace de PayPal / Wompi / Mercado Pago |
-| `href="#"` en las redes del pie | URLs de Facebook, Instagram y TikTok |
+| Teléfono y WhatsApp | +57 318 262 6857 (`573182626857` en los enlaces) |
+| Correo | aveda@gmail.com |
+| Nequi | 301 480 4112 |
+| Cifras | 150 rescatados · 130 adopciones · 600+ esterilizaciones · 6 años |
 
-También revisa las cifras de la sección de estadísticas (`data-contar`) y las
-historias de los animales, que actualmente son texto de ejemplo.
+## Pendientes por agregar
+
+- **Fotos reales** en `imagenes/` (ver `imagenes/LEE-ESTO.txt`).
+- **Nombres y municipios** de los animales del mosaico: busca `Nombre · Municipio`
+  en `index.html` y reemplaza cada uno.
+- **Redes sociales**: hay un comentario en el pie de página con el formato listo
+  para pegar los enlaces de Facebook e Instagram.
+- **NIT y dirección de la sede**, si quieres mostrarlos (buscar "Región de Urabá"
+  en la sección de contacto y la línea del copyright).
+- **Más medios de donación** (Daviplata, cuenta bancaria, PayPal): el bloque
+  `<div class="metodo">` del modal se puede duplicar.
 
 ## Publicar en Vercel
 
